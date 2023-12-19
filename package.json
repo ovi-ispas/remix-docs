@@ -1,0 +1,1353 @@
+{
+  "name": "remix-docs",
+  "displayName": "Remix Docs",
+  "description": "Remix Docs - A VS Code extension for Remix.run applications that shows documentation for the configured API version directly inside the editor.",
+  "homepage": "https://github.com/ovi-ispas/remix-docs#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovi-ispas/remix-docs.git"
+  },
+  "version": "1.0.0",
+  "icon": "./remix-docs-logo.png",
+  "keywords": [
+    "Remix",
+    "Docs",
+    "Documentation"
+  ],
+  "publisher": "ovi-ispas",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Remix Docs",
+      "properties": {
+        "remix-docs.version": {
+          "type": "string",
+          "default": "latest",
+          "enum": [
+            "1",
+            "2",
+            "latest"
+          ],
+          "description": "Which version of the Remix documentation to use."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "remix-docs.clientTs",
+        "category": "Remix Docs",
+        "title": "File Conventions > *.client.ts (v2+ docs)",
+        "shortTitle": "/file-conventions/-client"
+      },
+      {
+        "command": "remix-docs.serverTs",
+        "category": "Remix Docs",
+        "title": "File Conventions > *.server.ts (v2+ docs)",
+        "shortTitle": "/file-conventions/-server"
+      },
+      {
+        "command": "remix-docs.entryClient",
+        "category": "Remix Docs",
+        "title": "File Conventions > entry.client (v1+ docs)",
+        "shortTitle": "/file-conventions/entry.client"
+      },
+      {
+        "command": "remix-docs.entryServer",
+        "category": "Remix Docs",
+        "title": "File Conventions > entry.server (v1+ docs)",
+        "shortTitle": "/file-conventions/entry.server"
+      },
+      {
+        "command": "remix-docs.handleDataRequest",
+        "category": "Remix Docs",
+        "title": "File Conventions > entry.server > handleDataRequest (v1+ docs)",
+        "shortTitle": "/file-conventions/entry.server#handledatarequest"
+      },
+      {
+        "command": "remix-docs.handleError",
+        "category": "Remix Docs",
+        "title": "File Conventions > entry.server > handleError (v1+ docs)",
+        "shortTitle": "/file-conventions/entry.server#handleerror"
+      },
+      {
+        "command": "remix-docs.remixConfigJs",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config"
+      },
+      {
+        "command": "remix-docs.appDirectory",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > appDirectory (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#appdirectory"
+      },
+      {
+        "command": "remix-docs.assetsBuildDirectory",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > assetsBuildDirectory (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#assetsbuilddirectory"
+      },
+      {
+        "command": "remix-docs.browserNodeBuiltinsPolyfill",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > browserNodeBuiltinsPolyfill (v2+ docs)",
+        "shortTitle": "/file-conventions/remix-config#browsernodebuiltinspolyfill"
+      },
+      {
+        "command": "remix-docs.cacheDirectory",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > cacheDirectory (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#cachedirectory"
+      },
+      {
+        "command": "remix-docs.devServerBroadcastDelay",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > devServerBroadcastDelay (v1 docs)",
+        "shortTitle": "/file-conventions/remix-config#devserverbroadcastdelay"
+      },
+      {
+        "command": "remix-docs.devServerPort",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > devServerPort (v1 docs)",
+        "shortTitle": "/file-conventions/remix-config#devserverport"
+      },
+      {
+        "command": "remix-docs.future",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > future (v2+ docs)",
+        "shortTitle": "/file-conventions/remix-config#future"
+      },
+      {
+        "command": "remix-docs.ignoredRouteFiles",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > ignoredRouteFiles (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#ignoredroutefiles"
+      },
+      {
+        "command": "remix-docs.publicPath",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > publicPath (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#publicpath"
+      },
+      {
+        "command": "remix-docs.postcss",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > postcss (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#postcss"
+      },
+      {
+        "command": "remix-docs.routes",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > routes (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#routes"
+      },
+      {
+        "command": "remix-docs.server",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > server (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#server"
+      },
+      {
+        "command": "remix-docs.serverBuildDirectory",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverBuildDirectory (v1 docs)",
+        "shortTitle": "/file-conventions/remix-config#serverbuilddirectory"
+      },
+      {
+        "command": "remix-docs.serverBuildPath",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverBuildPath (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#serverbuildpath"
+      },
+      {
+        "command": "remix-docs.serverBuildTarget",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverBuildTarget (v1 docs)",
+        "shortTitle": "/file-conventions/remix-config#serverbuildtarget"
+      },
+      {
+        "command": "remix-docs.serverConditions",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverConditions (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#serverconditions"
+      },
+      {
+        "command": "remix-docs.serverDependenciesToBundle",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverDependenciesToBundle (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#serverdependenciestobundle"
+      },
+      {
+        "command": "remix-docs.serverMainFields",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverMainFields (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#servermainfields"
+      },
+      {
+        "command": "remix-docs.serverMinify",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverMinify (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#serverminify"
+      },
+      {
+        "command": "remix-docs.serverModuleFormat",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverModuleFormat (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#servermoduleformat"
+      },
+      {
+        "command": "remix-docs.serverNodeBuiltinsPolyfill",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverNodeBuiltinsPolyfill (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#servernodebuiltinspolyfill"
+      },
+      {
+        "command": "remix-docs.serverPlatform",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > serverPlatform (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#serverplatform"
+      },
+      {
+        "command": "remix-docs.tailwind",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > tailwind (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#tailwind"
+      },
+      {
+        "command": "remix-docs.watchPaths",
+        "category": "Remix Docs",
+        "title": "File Conventions > remix.config.js > watchPaths (v1+ docs)",
+        "shortTitle": "/file-conventions/remix-config#watchpaths"
+      },
+      {
+        "command": "remix-docs.rootRoute",
+        "category": "Remix Docs",
+        "title": "File Conventions > root (v1+ docs)",
+        "shortTitle": "/file-conventions/root"
+      },
+      {
+        "command": "remix-docs.routeFileNamingV1",
+        "category": "Remix Docs",
+        "title": "File Conventions > Route File Naming v1 (v1 docs)",
+        "shortTitle": "/file-conventions/routes-files"
+      },
+      {
+        "command": "remix-docs.routeFileNamingV2",
+        "category": "Remix Docs",
+        "title": "File Conventions > Route File Naming v2 (v2+ docs)",
+        "shortTitle": "/file-conventions/routes"
+      },
+      {
+        "command": "remix-docs.action",
+        "category": "Remix Docs",
+        "title": "Route Module > action (v1+ docs)",
+        "shortTitle": "/route/action"
+      },
+      {
+        "command": "remix-docs.catchBoundary",
+        "category": "Remix Docs",
+        "title": "Route Module > CatchBoundary (v1 docs)",
+        "shortTitle": "/route/catch-boundary"
+      },
+      {
+        "command": "remix-docs.clientAction",
+        "category": "Remix Docs",
+        "title": "Route Module > clientAction (v2+ docs)",
+        "shortTitle": "/route/client-action"
+      },
+      {
+        "command": "remix-docs.clientActionParams",
+        "category": "Remix Docs",
+        "title": "Route Module > clientAction > params (v2+ docs)",
+        "shortTitle": "/route/client-action#params"
+      },
+      {
+        "command": "remix-docs.clientActionRequest",
+        "category": "Remix Docs",
+        "title": "Route Module > clientAction > request (v2+ docs)",
+        "shortTitle": "/route/client-action#request"
+      },
+      {
+        "command": "remix-docs.clientActionServerAction",
+        "category": "Remix Docs",
+        "title": "Route Module > clientAction > serverAction (v2+ docs)",
+        "shortTitle": "/route/client-action#serveraction"
+      },
+      {
+        "command": "remix-docs.clientLoader",
+        "category": "Remix Docs",
+        "title": "Route Module > clientLoader (v2+ docs)",
+        "shortTitle": "/route/client-loader"
+      },
+      {
+        "command": "remix-docs.clientLoaderHydrate",
+        "category": "Remix Docs",
+        "title": "Route Module > clientLoader > clientLoader.hydrate (v2+ docs)",
+        "shortTitle": "/route/client-loader#clientloaderhydrate"
+      },
+      {
+        "command": "remix-docs.clientLoaderParams",
+        "category": "Remix Docs",
+        "title": "Route Module > clientLoader > params (v2+ docs)",
+        "shortTitle": "/route/client-loader#params"
+      },
+      {
+        "command": "remix-docs.clientLoaderRequest",
+        "category": "Remix Docs",
+        "title": "Route Module > clientLoader > request (v2+ docs)",
+        "shortTitle": "/route/client-loader#request"
+      },
+      {
+        "command": "remix-docs.clientLoaderServerLoader",
+        "category": "Remix Docs",
+        "title": "Route Module > clientLoader > serverLoader (v2+ docs)",
+        "shortTitle": "/route/client-loader#serverloader"
+      },
+      {
+        "command": "remix-docs.routeComponent",
+        "category": "Remix Docs",
+        "title": "Route Module > Route Component (v1+ docs)",
+        "shortTitle": "/route/component"
+      },
+      {
+        "command": "remix-docs.errorBoundary",
+        "category": "Remix Docs",
+        "title": "Route Module > Error Boundary (v1+ docs)",
+        "shortTitle": "/route/error-boundary"
+      },
+      {
+        "command": "remix-docs.handle",
+        "category": "Remix Docs",
+        "title": "Route Module > handle (v1+ docs)",
+        "shortTitle": "/route/handle"
+      },
+      {
+        "command": "remix-docs.headers",
+        "category": "Remix Docs",
+        "title": "Route Module > headers (v1+ docs)",
+        "shortTitle": "/route/headers"
+      },
+      {
+        "command": "remix-docs.hydrateFallback",
+        "category": "Remix Docs",
+        "title": "Route Module > Hydrate Fallback (v2+ docs)",
+        "shortTitle": "/hydrate-fallback"
+      },
+      {
+        "command": "remix-docs.links",
+        "category": "Remix Docs",
+        "title": "Route Module > links (v1+ docs)",
+        "shortTitle": "/route/links"
+      },
+      {
+        "command": "remix-docs.loader",
+        "category": "Remix Docs",
+        "title": "Route Module > loader (v1+ docs)",
+        "shortTitle": "/route/loader"
+      },
+      {
+        "command": "remix-docs.loaderParams",
+        "category": "Remix Docs",
+        "title": "Route Module > loader > params (v1+ docs)",
+        "shortTitle": "/route/loader#params"
+      },
+      {
+        "command": "remix-docs.loaderRequest",
+        "category": "Remix Docs",
+        "title": "Route Module > loader > request (v1+ docs)",
+        "shortTitle": "/route/loader#request"
+      },
+      {
+        "command": "remix-docs.loaderContext",
+        "category": "Remix Docs",
+        "title": "Route Module > loader > context (v1+ docs)",
+        "shortTitle": "/route/loader#context"
+      },
+      {
+        "command": "remix-docs.meta",
+        "category": "Remix Docs",
+        "title": "Route Module > meta (v1+ docs)",
+        "shortTitle": "/route/meta"
+      },
+      {
+        "command": "remix-docs.metaLocation",
+        "category": "Remix Docs",
+        "title": "Route Module > meta > location (v2+ docs)",
+        "shortTitle": "/route/meta#location"
+      },
+      {
+        "command": "remix-docs.metaMatches",
+        "category": "Remix Docs",
+        "title": "Route Module > meta > matches (v2+ docs)",
+        "shortTitle": "/route/meta#matches"
+      },
+      {
+        "command": "remix-docs.metaData",
+        "category": "Remix Docs",
+        "title": "Route Module > meta > data (v2+ docs)",
+        "shortTitle": "/route/meta#data"
+      },
+      {
+        "command": "remix-docs.metaParams",
+        "category": "Remix Docs",
+        "title": "Route Module > meta > params (v2+ docs)",
+        "shortTitle": "/route/meta#params"
+      },
+      {
+        "command": "remix-docs.metaError",
+        "category": "Remix Docs",
+        "title": "Route Module > meta > error (v2+ docs)",
+        "shortTitle": "/route/meta#error"
+      },
+      {
+        "command": "remix-docs.shouldRevalidate",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate (v1+ docs)",
+        "shortTitle": "/route/should-revalidate"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateActionResult",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > actionResult (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#actionresult"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateDefauldShouldRevalidate",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > defaultShouldRevalidate (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#defaultshouldrevalidate"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateCurrentParams",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > currentParams (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#currentparams"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateCurrentUrl",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > currentUrl (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#currenturl"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateNextParams",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > nextParams (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#nextparams"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateNextUrl",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > nextUrl (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#nexturl"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateFormMethod",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > formMethod (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#formmethod"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateFormAction",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > formAction (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#formaction"
+      },
+      {
+        "command": "remix-docs.shouldRevalidateFormData",
+        "category": "Remix Docs",
+        "title": "Route Module > shouldRevalidate > formData (v1+ docs)",
+        "shortTitle": "/route/should-revalidate#formdata"
+      },
+      {
+        "command": "remix-docs.await",
+        "category": "Remix Docs",
+        "title": "Components > Await (v1+ docs)",
+        "shortTitle": "/components/await"
+      },
+      {
+        "command": "remix-docs.awaitResolve",
+        "category": "Remix Docs",
+        "title": "Components > Await > resolve (v2+ docs)",
+        "shortTitle": "/components/await#resolve"
+      },
+      {
+        "command": "remix-docs.awaitChildren",
+        "category": "Remix Docs",
+        "title": "Components > Await > children (v2+ docs)",
+        "shortTitle": "/components/await#children"
+      },
+      {
+        "command": "remix-docs.awaitErrorElement",
+        "category": "Remix Docs",
+        "title": "Components > Await > errorElement (v2+ docs)",
+        "shortTitle": "/components/await#errorelement"
+      },
+      {
+        "command": "remix-docs.form",
+        "category": "Remix Docs",
+        "title": "Components > Form (v1+ docs)",
+        "shortTitle": "/components/form"
+      },
+      {
+        "command": "remix-docs.formAction",
+        "category": "Remix Docs",
+        "title": "Components > Form > action (v1+ docs)",
+        "shortTitle": "/components/form#action"
+      },
+      {
+        "command": "remix-docs.formMethod",
+        "category": "Remix Docs",
+        "title": "Components > Form > method (v1+ docs)",
+        "shortTitle": "/components/form#method"
+      },
+      {
+        "command": "remix-docs.formEncType",
+        "category": "Remix Docs",
+        "title": "Components > Form > encType (v1+ docs)",
+        "shortTitle": "/components/form#enctype"
+      },
+      {
+        "command": "remix-docs.formNavigate",
+        "category": "Remix Docs",
+        "title": "Components > Form > navigate (v2+ docs)",
+        "shortTitle": "/components/form#navigate"
+      },
+      {
+        "command": "remix-docs.formFetcherKey",
+        "category": "Remix Docs",
+        "title": "Components > Form > fetcherKey (v2+ docs)",
+        "shortTitle": "/components/form#fetcherkey"
+      },
+      {
+        "command": "remix-docs.formPreventScrollReset",
+        "category": "Remix Docs",
+        "title": "Components > Form > preventScrollReset (v2+ docs)",
+        "shortTitle": "/components/form#preventscrollreset"
+      },
+      {
+        "command": "remix-docs.formReplace",
+        "category": "Remix Docs",
+        "title": "Components > Form > replace (v1+ docs)",
+        "shortTitle": "/components/form#replace"
+      },
+      {
+        "command": "remix-docs.formReloadDocument",
+        "category": "Remix Docs",
+        "title": "Components > Form > reloadDocument (v1+ docs)",
+        "shortTitle": "/components/form#reloaddocument"
+      },
+      {
+        "command": "remix-docs.formUnstableViewTransition",
+        "category": "Remix Docs",
+        "title": "Components > Form > unstable_ViewTransition (v2+ docs)",
+        "shortTitle": "/components/form#unstable_viewtransition"
+      },
+      {
+        "command": "remix-docs.formIndex",
+        "category": "Remix Docs",
+        "title": "Components > Form > ?index (v2+ docs)",
+        "shortTitle": "/components/form#index"
+      },
+      {
+        "command": "remix-docs.link",
+        "category": "Remix Docs",
+        "title": "Components > Link (v1+ docs)",
+        "shortTitle": "/components/link"
+      },
+      {
+        "command": "remix-docs.linkPrefetch",
+        "category": "Remix Docs",
+        "title": "Components > Link > prefetch (v1+ docs)",
+        "shortTitle": "/components/link#prefetch"
+      },
+      {
+        "command": "remix-docs.linkPreventScrollReset",
+        "category": "Remix Docs",
+        "title": "Components > Link > preventScrollReset (v2+ docs)",
+        "shortTitle": "/components/link#preventscrollreset"
+      },
+      {
+        "command": "remix-docs.relative",
+        "category": "Remix Docs",
+        "title": "Components > Link > relative (v2+ docs)",
+        "shortTitle": "/components/link#relative"
+      },
+      {
+        "command": "remix-docs.linkReloadDocument",
+        "category": "Remix Docs",
+        "title": "Components > Link > reloadDocument (v2+ docs)",
+        "shortTitle": "/components/link#reloaddocument"
+      },
+      {
+        "command": "remix-docs.linkReplace",
+        "category": "Remix Docs",
+        "title": "Components > Link > replace (v2+ docs)",
+        "shortTitle": "/components/link#replace"
+      },
+      {
+        "command": "remix-docs.linkState",
+        "category": "Remix Docs",
+        "title": "Components > Link > state (v2+ docs)",
+        "shortTitle": "/components/link#state"
+      },
+      {
+        "command": "remix-docs.linkUnstableViewTransition",
+        "category": "Remix Docs",
+        "title": "Components > Link > unstable_ViewTransition (v2+ docs)",
+        "shortTitle": "/components/link#unstable_viewtransition"
+      },
+      {
+        "command": "remix-docs.linksComponent",
+        "category": "Remix Docs",
+        "title": "Components > Links (v1+ docs)",
+        "shortTitle": "/components/links"
+      },
+      {
+        "command": "remix-docs.liveReload",
+        "category": "Remix Docs",
+        "title": "Components > LiveReload (v1+ docs)",
+        "shortTitle": "/components/live-reload"
+      },
+      {
+        "command": "remix-docs.metaComponent",
+        "category": "Remix Docs",
+        "title": "Components > Meta (v1+ docs)",
+        "shortTitle": "/components/meta"
+      },
+      {
+        "command": "remix-docs.navLink",
+        "category": "Remix Docs",
+        "title": "Components > NavLink (v1+ docs)",
+        "shortTitle": "/components/nav-link"
+      },
+      {
+        "command": "remix-docs.navLinkActive",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > .active (v1+ docs)",
+        "shortTitle": "/components/nav-link#active"
+      },
+      {
+        "command": "remix-docs.navLinkAriaCurrent",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > aria-current (v1+ docs)",
+        "shortTitle": "/components/nav-link#aria-current"
+      },
+      {
+        "command": "remix-docs.navLinkPending",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > .pending (v2+ docs)",
+        "shortTitle": "/components/nav-link#pending"
+      },
+      {
+        "command": "remix-docs.navLinkTransitioning",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > .transitioning (v2+ docs)",
+        "shortTitle": "/components/nav-link#transitioning"
+      },
+      {
+        "command": "remix-docs.navLinkClassName",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > className (v1+ docs)",
+        "shortTitle": "/components/nav-link#classname-callback"
+      },
+      {
+        "command": "remix-docs.navLinkStyle",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > style (v1+ docs)",
+        "shortTitle": "/components/nav-link#style-callback"
+      },
+      {
+        "command": "remix-docs.navLinkChildren",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > children (v1+ docs)",
+        "shortTitle": "/components/nav-link#children-callback"
+      },
+      {
+        "command": "remix-docs.navLinkEnd",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > end (v1+ docs)",
+        "shortTitle": "/components/nav-link#end"
+      },
+      {
+        "command": "remix-docs.navLinkCaseSensitive",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > caseSensitive (v1+ docs)",
+        "shortTitle": "/components/nav-link#casesensitive"
+      },
+      {
+        "command": "remix-docs.navLinkUnstableViewTransition",
+        "category": "Remix Docs",
+        "title": "Components > NavLink > unstable_ViewTransition (v2+ docs)",
+        "shortTitle": "/components/nav-link#unstable_viewtransition"
+      },
+      {
+        "command": "remix-docs.outlet",
+        "category": "Remix Docs",
+        "title": "Components > Outlet (v1+ docs)",
+        "shortTitle": "/components/outlet"
+      },
+      {
+        "command": "remix-docs.outletContext",
+        "category": "Remix Docs",
+        "title": "Components > Outlet > context (v2+ docs)",
+        "shortTitle": "/components/outlet#context"
+      },
+      {
+        "command": "remix-docs.prefetchPageLinks",
+        "category": "Remix Docs",
+        "title": "Components > PrefetchPageLinks (v1+ docs)",
+        "shortTitle": "/components/prefetch-page-links"
+      },
+      {
+        "command": "remix-docs.scripts",
+        "category": "Remix Docs",
+        "title": "Components > Scripts (v1+ docs)",
+        "shortTitle": "/components/scripts"
+      },
+      {
+        "command": "remix-docs.scrollRestoration",
+        "category": "Remix Docs",
+        "title": "Components > ScrollRestoration (v1+ docs)",
+        "shortTitle": "/components/scroll-restoration"
+      },
+      {
+        "command": "remix-docs.scrollRestorationGetKey",
+        "category": "Remix Docs",
+        "title": "Components > ScrollRestoration > getKey (v2+ docs)",
+        "shortTitle": "/components/scroll-restoration#getkey"
+      },
+      {
+        "command": "remix-docs.scrollRestorationNonce",
+        "category": "Remix Docs",
+        "title": "Components > ScrollRestoration > nonce (v2+ docs)",
+        "shortTitle": "/components/scroll-restoration#nonce"
+      },
+      {
+        "command": "remix-docs.useActionData",
+        "category": "Remix Docs",
+        "title": "Hooks > useActionData (v1+ docs)",
+        "shortTitle": "/hooks/use-action-data"
+      },
+      {
+        "command": "remix-docs.useAsyncError",
+        "category": "Remix Docs",
+        "title": "Hooks > useAsyncError (v1+ docs)",
+        "shortTitle": "/hooks/use-async-error"
+      },
+      {
+        "command": "remix-docs.useAsyncValue",
+        "category": "Remix Docs",
+        "title": "Hooks > useAsyncValue (v1+ docs)",
+        "shortTitle": "/hooks/use-async-value"
+      },
+      {
+        "command": "remix-docs.useBeforeUnload",
+        "category": "Remix Docs",
+        "title": "Hooks > useBeforeUnload (v1+ docs)",
+        "shortTitle": "/hooks/use-before-unload"
+      },
+      {
+        "command": "remix-docs.useBlocker",
+        "category": "Remix Docs",
+        "title": "Hooks > useBlocker (v2+ docs)",
+        "shortTitle": "/hooks/use-blocker"
+      },
+      {
+        "command": "remix-docs.useFetcher",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher (v1+ docs)",
+        "shortTitle": "/hooks/use-fetcher"
+      },
+      {
+        "command": "remix-docs.useFetcherKey",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > key (v2+ docs)",
+        "shortTitle": "/hooks/use-fetcher#key"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherForm",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.Form (v1+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherform"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherSubmit",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.submit (v1+ docs)",
+        "shortTitle": "/use-fetcher#fetchersubmitformdata-options"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherLoad",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.load (v1+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherloadhref-options"
+      },
+      {
+        "command": "remix-docs.useFetcherOptionsUnstableFlushSync",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > options.unstable_flushSync (v2+ docs)",
+        "shortTitle": "/hooks/use-fetcher#optionsunstable_flushsync"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherState",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.state (v1+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherstate"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherData",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.data (v1+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherdata"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherFormData",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.formData (v2+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherformdata"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherFormAction",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.formAction (v2+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherformaction"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherFormMethod",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.formMethod (v2+ docs)",
+        "shortTitle": "/hooks/use-fetcher#fetcherformmethod"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherType",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.type (v1 docs)",
+        "shortTitle": "/hooks/use-fetcher#fetchertype"
+      },
+      {
+        "command": "remix-docs.useFetcherFetcherSubmission",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetcher > fetcher.submission (v1 docs)",
+        "shortTitle": "/hooks/use-fetcher#fetchersubmission"
+      },
+      {
+        "command": "remix-docs.useFetchers",
+        "category": "Remix Docs",
+        "title": "Hooks > useFetchers (v1+ docs)",
+        "shortTitle": "/hooks/use-fetchers"
+      },
+      {
+        "command": "remix-docs.useFormAction",
+        "category": "Remix Docs",
+        "title": "Hooks > useFormAction (v1+ docs)",
+        "shortTitle": "/hooks/use-form-action"
+      },
+      {
+        "command": "remix-docs.useFormActionAction",
+        "category": "Remix Docs",
+        "title": "Hooks > useFormAction > action (v2+ docs)",
+        "shortTitle": "/hooks/use-form-action#action"
+      },
+      {
+        "command": "remix-docs.useFormActionOptions",
+        "category": "Remix Docs",
+        "title": "Hooks > useFormAction > options (v2+ docs)",
+        "shortTitle": "/hooks/use-form-action#options"
+      },
+      {
+        "command": "remix-docs.useHref",
+        "category": "Remix Docs",
+        "title": "Hooks > useHref (v1+ docs)",
+        "shortTitle": "/hooks/use-href"
+      },
+      {
+        "command": "remix-docs.useHrefTo",
+        "category": "Remix Docs",
+        "title": "Hooks > useHref > to (v2+ docs)",
+        "shortTitle": "/hooks/use-href#to"
+      },
+      {
+        "command": "remix-docs.useHrefOptions",
+        "category": "Remix Docs",
+        "title": "Hooks > useHref > options (v2+ docs)",
+        "shortTitle": "/hooks/use-href#options"
+      },
+      {
+        "command": "remix-docs.useLoaderData",
+        "category": "Remix Docs",
+        "title": "Hooks > useLoaderData (v1+ docs)",
+        "shortTitle": "/hooks/use-loader-data"
+      },
+      {
+        "command": "remix-docs.useLocation",
+        "category": "Remix Docs",
+        "title": "Hooks > useLocation (v1+ docs)",
+        "shortTitle": "/hooks/use-location"
+      },
+      {
+        "command": "remix-docs.useLocationLocationHash",
+        "category": "Remix Docs",
+        "title": "Hooks > useLocation > location.hash (v2+ docs)",
+        "shortTitle": "/hooks/use-location#locationhash"
+      },
+      {
+        "command": "remix-docs.useLocationLocationKey",
+        "category": "Remix Docs",
+        "title": "Hooks > useLocation > location.key (v2+ docs)",
+        "shortTitle": "/hooks/use-location#locationkey"
+      },
+      {
+        "command": "remix-docs.useLocationLocationPathname",
+        "category": "Remix Docs",
+        "title": "Hooks > useLocation > location.pathname (v2+ docs)",
+        "shortTitle": "/hooks/use-location#locationpathname"
+      },
+      {
+        "command": "remix-docs.useLocationLocationSearch",
+        "category": "Remix Docs",
+        "title": "Hooks > useLocation > location.search (v2+ docs)",
+        "shortTitle": "/hooks/use-location#locationsearch"
+      },
+      {
+        "command": "remix-docs.useLocationLocationState",
+        "category": "Remix Docs",
+        "title": "Hooks > useLocation > location.state (v2+ docs)",
+        "shortTitle": "/hooks/use-location#locationstate"
+      },
+      {
+        "command": "remix-docs.useMatches",
+        "category": "Remix Docs",
+        "title": "Hooks > useMatches (v1+ docs)",
+        "shortTitle": "/hooks/use-matches"
+      },
+      {
+        "command": "remix-docs.useNavigate",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigate (v1+ docs)",
+        "shortTitle": "/hooks/use-navigate"
+      },
+      {
+        "command": "remix-docs.useNavigateToString",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigate > to: string (v2+ docs)",
+        "shortTitle": "/hooks/use-navigate#to-string"
+      },
+      {
+        "command": "remix-docs.useNavigateToTo",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigate > to: To (v2+ docs)",
+        "shortTitle": "/hooks/use-navigate#to-to"
+      },
+      {
+        "command": "remix-docs.useNavigateToNumber",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigate > to: number (v2+ docs)",
+        "shortTitle": "/hooks/use-navigate#to-number"
+      },
+      {
+        "command": "remix-docs.useNavigateOptions",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigate > options (v2+ docs)",
+        "shortTitle": "/hooks/use-navigate#options"
+      },
+      {
+        "command": "remix-docs.useNavigation",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigation (v1+ docs)",
+        "shortTitle": "/hooks/use-navigation"
+      },
+      {
+        "command": "remix-docs.useNavigationNavigationFormAction",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigation > navigation.formAction (v2+ docs)",
+        "shortTitle": "/hooks/use-navigation#navigationformaction"
+      },
+      {
+        "command": "remix-docs.useNavigationNavigationFormMethod",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigation > navigation.formMethod (v2+ docs)",
+        "shortTitle": "/hooks/use-navigation#navigationformmethod"
+      },
+      {
+        "command": "remix-docs.useNavigationNavigationFormData",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigation > navigation.formData (v2+ docs)",
+        "shortTitle": "/hooks/use-navigation#navigationformdata"
+      },
+      {
+        "command": "remix-docs.useNavigationNavigationLocation",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigation > navigation.location (v2+ docs)",
+        "shortTitle": "/hooks/use-navigation#navigationlocation"
+      },
+      {
+        "command": "remix-docs.useNavigationNavigationState",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigation > navigation.state (v2+ docs)",
+        "shortTitle": "/hooks/use-navigation#navigationstate"
+      },
+      {
+        "command": "remix-docs.useNavigationType",
+        "category": "Remix Docs",
+        "title": "Hooks > useNavigationType (v1+ docs)",
+        "shortTitle": "/hooks/use-navigation-type"
+      },
+      {
+        "command": "remix-docs.useOutlet",
+        "category": "Remix Docs",
+        "title": "Hooks > useOutlet (v1+ docs)",
+        "shortTitle": "/hooks/use-outlet"
+      },
+      {
+        "command": "remix-docs.useOutletContext",
+        "category": "Remix Docs",
+        "title": "Hooks > useOutletContext (v1+ docs)",
+        "shortTitle": "/hooks/use-outlet-context"
+      },
+      {
+        "command": "remix-docs.useParams",
+        "category": "Remix Docs",
+        "title": "Hooks > useParams (v1+ docs)",
+        "shortTitle": "/hooks/use-params"
+      },
+      {
+        "command": "remix-docs.unstableUsePrompt",
+        "category": "Remix Docs",
+        "title": "Hooks > unstable_usePrompt (v2+ docs)",
+        "shortTitle": "/hooks/use-prompt"
+      },
+      {
+        "command": "remix-docs.useResolvedPath",
+        "category": "Remix Docs",
+        "title": "Hooks > useResolvedPath (v1+ docs)",
+        "shortTitle": "/hooks/use-resolved-path"
+      },
+      {
+        "command": "remix-docs.useRevalidator",
+        "category": "Remix Docs",
+        "title": "Hooks > useRevalidator (v1+ docs)",
+        "shortTitle": "/hooks/use-revalidator"
+      },
+      {
+        "command": "remix-docs.useRevalidatorRevalidatorState",
+        "category": "Remix Docs",
+        "title": "Hooks > useRevalidator > revalidator.state (v2+ docs)",
+        "shortTitle": "/hooks/use-revalidator#revalidatorstate"
+      },
+      {
+        "command": "remix-docs.useRevalidatorRevalidatorRevalidate",
+        "category": "Remix Docs",
+        "title": "Hooks > useRevalidator > revalidator.revalidate (v2+ docs)",
+        "shortTitle": "/hooks/use-revalidator#revalidatorrevalidate"
+      },
+      {
+        "command": "remix-docs.useRouteError",
+        "category": "Remix Docs",
+        "title": "Hooks > useRouteError (v1+ docs)",
+        "shortTitle": "/hooks/use-route-error"
+      },
+      {
+        "command": "remix-docs.useRouteLoaderData",
+        "category": "Remix Docs",
+        "title": "Hooks > useRouteLoaderData (v1+ docs)",
+        "shortTitle": "/hooks/use-route-loader-data"
+      },
+      {
+        "command": "remix-docs.useSearchParams",
+        "category": "Remix Docs",
+        "title": "Hooks > useSearchParams (v1+ docs)",
+        "shortTitle": "/hooks/use-search-params"
+      },
+      {
+        "command": "remix-docs.useSearchParamsSearchParams",
+        "category": "Remix Docs",
+        "title": "Hooks > useSearchParams > searchParams (v2+ docs)",
+        "shortTitle": "/hooks/use-search-params#searchparams"
+      },
+      {
+        "command": "remix-docs.useSearchParamsSetSearchParams",
+        "category": "Remix Docs",
+        "title": "Hooks > useSearchParams > setSearchParams (v2+ docs)",
+        "shortTitle": "/hooks/use-search-params#setsearchparamsparams"
+      },
+      {
+        "command": "remix-docs.useSearchParamsSetSearchParamsFn",
+        "category": "Remix Docs",
+        "title": "Hooks > useSearchParams > setSearchParams(fn) (v2+ docs)",
+        "shortTitle": "/hooks/use-search-params#setsearchparamsprevparams--newparams"
+      },
+      {
+        "command": "remix-docs.useSubmit",
+        "category": "Remix Docs",
+        "title": "Hooks > useSubmit (v1+ docs)",
+        "shortTitle": "/hooks/use-submit"
+      },
+      {
+        "command": "remix-docs.useSubmitTargetOrData",
+        "category": "Remix Docs",
+        "title": "Hooks > useSubmit > targetOrData (v2+ docs)",
+        "shortTitle": "/hooks/use-submit#targetordata"
+      },
+      {
+        "command": "remix-docs.useSubmitOptions",
+        "category": "Remix Docs",
+        "title": "Hooks > useSubmit > options (v2+ docs)",
+        "shortTitle": "/hooks/use-submit#options"
+      },
+      {
+        "command": "remix-docs.useTransition",
+        "category": "Remix Docs",
+        "title": "Hooks > useTransition (v1 docs)",
+        "shortTitle": "/hooks/use-transition"
+      },
+      {
+        "command": "remix-docs.useTransitionTransitionState",
+        "category": "Remix Docs",
+        "title": "Hooks > useTransition > transition.state (v1 docs)",
+        "shortTitle": "/hooks/use-transition#transitionstate"
+      },
+      {
+        "command": "remix-docs.useTransitionTransitionType",
+        "category": "Remix Docs",
+        "title": "Hooks > useTransition > transition.type (v1 docs)",
+        "shortTitle": "/hooks/use-transition#transitiontype"
+      },
+      {
+        "command": "remix-docs.useTransitionTransitionSubmission",
+        "category": "Remix Docs",
+        "title": "Hooks > useTransition > transition.submission (v1 docs)",
+        "shortTitle": "/hooks/use-transition#transitionsubmission"
+      },
+      {
+        "command": "remix-docs.useTransitionTransitionLocation",
+        "category": "Remix Docs",
+        "title": "Hooks > useTransition > transition.location (v1 docs)",
+        "shortTitle": "/hooks/use-transition#transitionlocation"
+      },
+      {
+        "command": "remix-docs.unstable_useViewTransitionState",
+        "category": "Remix Docs",
+        "title": "Hooks > unstable_useViewTransitionState (v2+ docs)",
+        "shortTitle": "/hooks/use-view-transition-state"
+      },
+      {
+        "command": "remix-docs.cookies",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies (v1+ docs)",
+        "shortTitle": "/utils/cookies"
+      },
+      {
+        "command": "remix-docs.cookiesCreateCookie",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > createCookie (v1+ docs)",
+        "shortTitle": "/utils/cookies#createcookie"
+      },
+      {
+        "command": "remix-docs.cookiesIsCookie",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > isCookie (v1+ docs)",
+        "shortTitle": "/utils/cookies#iscookie"
+      },
+      {
+        "command": "remix-docs.cookiesCookieName",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > cookie.name (v1+ docs)",
+        "shortTitle": "/utils/cookies#cookiename"
+      },
+      {
+        "command": "remix-docs.cookiesCookieParse",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > cookie.parse (v1+ docs)",
+        "shortTitle": "/utils/cookies#cookieparse"
+      },
+      {
+        "command": "remix-docs.cookiesCookieSerialize",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > cookie.serialize (v1+ docs)",
+        "shortTitle": "/utils/cookies#cookieserialize"
+      },
+      {
+        "command": "remix-docs.cookiesCookieIsSigned",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > cookie.isSigned (v1+ docs)",
+        "shortTitle": "/utils/cookies#cookieissigned"
+      },
+      {
+        "command": "remix-docs.cookiesCookieExpires",
+        "category": "Remix Docs",
+        "title": "Utilities > Cookies > cookie.expires (v1+ docs)",
+        "shortTitle": "/utils/cookies#cookieexpires"
+      },
+      {
+        "command": "remix-docs.createRemixStub",
+        "category": "Remix Docs",
+        "title": "Utilities > createRemixStub (v2+ docs)",
+        "shortTitle": "/utils/create-remix-stub"
+      },
+      {
+        "command": "remix-docs.defer",
+        "category": "Remix Docs",
+        "title": "Utilities > defer (v1+ docs)",
+        "shortTitle": "/utils/defer"
+      },
+      {
+        "command": "remix-docs.isRouteErrorResponse",
+        "category": "Remix Docs",
+        "title": "Utilities > isRouteErrorResponse (v1+ docs)",
+        "shortTitle": "/utils/is-route-error-response"
+      },
+      {
+        "command": "remix-docs.json",
+        "category": "Remix Docs",
+        "title": "Utilities > json (v1+ docs)",
+        "shortTitle": "/utils/json"
+      },
+      {
+        "command": "remix-docs.unstableParseMultipartFormData",
+        "category": "Remix Docs",
+        "title": "Utilities > unstable_parseMultipartFormData (v1+ docs)",
+        "shortTitle": "/utils/parse-multipart-form-data"
+      },
+      {
+        "command": "remix-docs.unstableParseMultipartFormDataUploadHandler",
+        "category": "Remix Docs",
+        "title": "Utilities > unstable_parseMultipartFormData > uploadHandler (v1+ docs)",
+        "shortTitle": "/utils/parse-multipart-form-data#uploadhandler"
+      },
+      {
+        "command": "remix-docs.redirect",
+        "category": "Remix Docs",
+        "title": "Utilities > redirect (v1+ docs)",
+        "shortTitle": "/utils/redirect"
+      },
+      {
+        "command": "remix-docs.redirectDocument",
+        "category": "Remix Docs",
+        "title": "Utilities > redirectDocument (v2+ docs)",
+        "shortTitle": "/utils/redirectDocument"
+      },
+      {
+        "command": "remix-docs.sessions",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions (v1+ docs)",
+        "shortTitle": "/utils/sessions"
+      },
+      {
+        "command": "remix-docs.sessionsCreateSession",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createSession (v1+ docs)",
+        "shortTitle": "/utils/sessions#createsession"
+      },
+      {
+        "command": "remix-docs.sessionsIsSession",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > isSession (v1+ docs)",
+        "shortTitle": "/utils/sessions#issession"
+      },
+      {
+        "command": "remix-docs.sessionsCreateSessionStorage",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createSessionStorage (v1+ docs)",
+        "shortTitle": "/utils/sessions#createsessionstorage"
+      },
+      {
+        "command": "remix-docs.sessionsCreateCookieSessionStorage",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createCookieSessionStorage (v1+ docs)",
+        "shortTitle": "/utils/sessions#createcookiesessionstorage"
+      },
+      {
+        "command": "remix-docs.sessionsCreateMemorySessionStorage",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createMemorySessionStorage (v1+ docs)",
+        "shortTitle": "/utils/sessions#creatememorysessionstorage"
+      },
+      {
+        "command": "remix-docs.sessionsCreateFileSessionStorage",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createFileSessionStorage (v1+ docs)",
+        "shortTitle": "/utils/sessions#createfilesessionstorage-node"
+      },
+      {
+        "command": "remix-docs.sessionsCreateWorkersKVSessionStorage",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createWorkersKVSessionStorage (v1+ docs)",
+        "shortTitle": "/utils/sessions#createworkerskvsessionstorage-cloudflare-workers"
+      },
+      {
+        "command": "remix-docs.sessionsCreateArcTableSessionStorage",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > createArcTableSessionStorage (v1+ docs)",
+        "shortTitle": "/utils/sessions#createarctablesessionstorage-architect-amazon-dynamodb"
+      },
+      {
+        "command": "remix-docs.sessionsSessionHas",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > session.has (v1+ docs)",
+        "shortTitle": "/utils/sessions#sessionhaskey"
+      },
+      {
+        "command": "remix-docs.sessionsSessionSet",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > session.set (v1+ docs)",
+        "shortTitle": "/utils/sessions#sessionsetkey-value"
+      },
+      {
+        "command": "remix-docs.sessionsSessionFlash",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > session.flash (v1+ docs)",
+        "shortTitle": "/utils/sessions#sessionflashkey-value"
+      },
+      {
+        "command": "remix-docs.sessionsSessionGet",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > session.get (v1+ docs)",
+        "shortTitle": "/utils/sessions#sessionget"
+      },
+      {
+        "command": "remix-docs.sessionsSessionUnset",
+        "category": "Remix Docs",
+        "title": "Utilities > Sessions > session.unset (v1+ docs)",
+        "shortTitle": "/utils/sessions#sessionunset"
+      },
+      {
+        "command": "remix-docs.unstableCreateFileUploadHandler",
+        "category": "Remix Docs",
+        "title": "Utilities > unstable_createFileUploadHandler (v1+ docs)",
+        "shortTitle": "/utils/unstable-create-file-upload-handler"
+      },
+      {
+        "command": "remix-docs.unstableCreateMemoryUploadHandler",
+        "category": "Remix Docs",
+        "title": "Utilities > unstable_createMemoryUploadHandler (v1+ docs)",
+        "shortTitle": "/utils/unstable-create-memory-upload-handler"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "esbuild": "^0.19.10",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  }
+}
