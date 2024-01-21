@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/ovi-ispas/remix-docs.git"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "icon": "./remix-docs-logo.png",
   "keywords": [
     "Remix",
@@ -337,7 +337,7 @@
         "command": "remix-docs.hydrateFallback",
         "category": "Remix Docs",
         "title": "Route Module > Hydrate Fallback (v2+ docs)",
-        "shortTitle": "/hydrate-fallback"
+        "shortTitle": "/route/hydrate-fallback"
       },
       {
         "command": "remix-docs.links",
@@ -616,6 +616,24 @@
         "shortTitle": "/components/live-reload"
       },
       {
+        "command": "remix-docs.liveReloadOrigin",
+        "category": "Remix Docs",
+        "title": "Components > LiveReload > origin (v2+ docs)",
+        "shortTitle": "/components/live-reload#origin"
+      },
+      {
+        "command": "remix-docs.liveReloadPort",
+        "category": "Remix Docs",
+        "title": "Components > LiveReload > port (v2+ docs)",
+        "shortTitle": "/components/live-reload#port"
+      },
+      {
+        "command": "remix-docs.liveReloadTimeoutMs",
+        "category": "Remix Docs",
+        "title": "Components > LiveReload > timeoutMs (v2+ docs)",
+        "shortTitle": "/components/live-reload#timeoutms"
+      },
+      {
         "command": "remix-docs.metaComponent",
         "category": "Remix Docs",
         "title": "Components > Meta (v1+ docs)",
@@ -760,6 +778,30 @@
         "shortTitle": "/hooks/use-blocker"
       },
       {
+        "command": "remix-docs.useBlockerState",
+        "category": "Remix Docs",
+        "title": "Hooks > useBlocker > state (v2+ docs)",
+        "shortTitle": "/hooks/use-blocker#state"
+      },
+      {
+        "command": "remix-docs.useBlockerLocation",
+        "category": "Remix Docs",
+        "title": "Hooks > useBlocker > location (v2+ docs)",
+        "shortTitle": "/hooks/use-blocker#location"
+      },
+      {
+        "command": "remix-docs.useBlockerProceed >",
+        "category": "Remix Docs",
+        "title": "Hooks > useBlocker > proceed() (v2+ docs)",
+        "shortTitle": "/hooks/use-blocker#proceed"
+      },
+      {
+        "command": "remix-docs.useBlockerReset",
+        "category": "Remix Docs",
+        "title": "Hooks > useBlocker > reset() (v2+ docs)",
+        "shortTitle": "/hooks/use-blocker#reset"
+      },
+      {
         "command": "remix-docs.useFetcher",
         "category": "Remix Docs",
         "title": "Hooks > useFetcher (v1+ docs)",
@@ -781,7 +823,7 @@
         "command": "remix-docs.useFetcherFetcherSubmit",
         "category": "Remix Docs",
         "title": "Hooks > useFetcher > fetcher.submit (v1+ docs)",
-        "shortTitle": "/use-fetcher#fetchersubmitformdata-options"
+        "shortTitle": "/hooks/use-fetcher#fetchersubmitformdata-options"
       },
       {
         "command": "remix-docs.useFetcherFetcherLoad",
@@ -1075,13 +1117,13 @@
         "command": "remix-docs.useSearchParamsSetSearchParams",
         "category": "Remix Docs",
         "title": "Hooks > useSearchParams > setSearchParams (v2+ docs)",
-        "shortTitle": "/hooks/use-search-params#setsearchparamsparams"
+        "shortTitle": "/hooks/use-search-params#setsearchparamsparams-navigateoptions"
       },
       {
         "command": "remix-docs.useSearchParamsSetSearchParamsFn",
         "category": "Remix Docs",
         "title": "Hooks > useSearchParams > setSearchParams(fn) (v2+ docs)",
-        "shortTitle": "/hooks/use-search-params#setsearchparamsprevparams--newparams"
+        "shortTitle": "/hooks/use-search-params#setsearchparamsprevparams--newparams-navigateoptions"
       },
       {
         "command": "remix-docs.useSubmit",
@@ -1328,6 +1370,24 @@
         "category": "Remix Docs",
         "title": "Utilities > unstable_createMemoryUploadHandler (v1+ docs)",
         "shortTitle": "/utils/unstable-create-memory-upload-handler"
+      },
+      {
+        "command": "remix-docs.futureServerBundles",
+        "category": "Remix Docs",
+        "title": "Future > Server Bundles (v2 docs)",
+        "shortTitle": "/future/server-bundles"
+      },
+      {
+        "command": "remix-docs.futureSpaMode",
+        "category": "Remix Docs",
+        "title": "Future > SPA Mode (v2 docs)",
+        "shortTitle": "/future/spa-mode"
+      },
+      {
+        "command": "remix-docs.futureVite",
+        "category": "Remix Docs",
+        "title": "Future > Vite (v2 docs)",
+        "shortTitle": "/future/vite"
       }
     ]
   },
